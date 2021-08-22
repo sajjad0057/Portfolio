@@ -42,7 +42,7 @@ class portfolio(models.Model):
 
 
     class Meta:
-        verbose_name_plural = 'portfolio Section'
+        verbose_name_plural = 'Portfolio Section'
 
     def __str__(self):
         return self.project_name
@@ -52,11 +52,11 @@ class portfolio(models.Model):
 class testimonial(models.Model):
     client_name = models.CharField(max_length=64)
     client_title = models.CharField(max_length=128,blank=True,null=True)
-    client_image = models.ImageField(upload_to = "client_images")
+    client_image = models.ImageField(upload_to = "client_images",blank=True,null=True)
     client_comment = models.TextField()
 
     class Meta:
-        verbose_name_plural = 'testimonial section'
+        verbose_name_plural = 'Testimonial Section'
 
 
     def __str__(self):
@@ -71,11 +71,11 @@ class contact(models.Model):
     instagram_url = models.URLField(blank=True,null=True)
     linkdin_url = models.URLField(blank=True,null=True)
     Email = models.EmailField()
-    phone = models.CharField(blank=True,null=True)
+    phone = models.CharField(max_length=32,blank=True,null=True)
 
 
     class Meta:
-        verbose_name_plural = 'contact section'
+        verbose_name_plural = 'Contact Section'
 
 
 
