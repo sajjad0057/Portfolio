@@ -1,4 +1,3 @@
-from enum import unique
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
@@ -7,11 +6,11 @@ from django.utils.text import slugify
 
 
 class Blog(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE,default='sajjad')
     title = models.CharField(max_length=256)
     details = models.TextField()
     image = models.ImageField(upload_to = 'blogs_image',blank=True,null = True)
-    slug = models.SlugField(max_length=256,unique=True,allow_unicode=True)
+    slug = models.SlugField(max_length=256,unique=True,allow_unicode=True,blank=True,null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -20,16 +19,17 @@ class Blog(models.Model):
         return self.title
 
     class Meta:
+        ordering = ['-created_at']
         verbose_name_plural = 'Blogs'
 
     #generate unique slug
     def _unique_slug_maker(self):
-        unique_slug = slugify(self.slug,allow_unicode=True)
+        unique_slug = slugify(self.title , allow_unicode=True)
         n = 102 # any random rumber
-        while Blog.objects.filter(slug = unique_slug).exists():
-            unique_slug =  '{}-{}'.format(unique_slug,n)
+        while Blog.objects.filter(slug=unique_slug).exists():
+            unique_slug = '{}-{}'.format(unique_slug,n)
             n += 30
-            return unique_slug
+        return unique_slug
 
     #save unique slug 
     def save(self,*args,**kwargs):

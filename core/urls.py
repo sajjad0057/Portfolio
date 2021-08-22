@@ -11,7 +11,7 @@ urlpatterns = [
     path('welcome/',include('portfolio.urls')),
     path('blog/',include('blog.urls')),
     path('', RedirectView.as_view(url='welcome/', permanent=True)),  # initialy  redirect application with 'catalog/' url 
-
+    path('summernote/', include('django_summernote.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
 

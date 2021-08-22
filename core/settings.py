@@ -41,7 +41,15 @@ INSTALLED_APPS = [
     #apps
     'portfolio.apps.PortfolioConfig',
     'blog.apps.BlogConfig',
+
+    #3rd party apps
+    'django_summernote',
+    'django_cleanup.apps.CleanupConfig',
 ]
+
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+SUMMERNOTE_THEME = 'bs4' # according to django-summernote documentation
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
