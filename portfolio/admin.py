@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import About,services,portfolio,testimonial,contact,client_message
+from .models import About,Services,Portfolio,Testimonial,Contact,Client_message,Portfolio_category
 from django_summernote.admin import SummernoteModelAdmin
 
 # Register your models here.
@@ -12,6 +12,10 @@ class AboutAdmin(SummernoteModelAdmin):
 
 class ServiceAdmin(admin.ModelAdmin):
     list_display = ( 'service_name','service_text' )
+
+
+
+
 
 
 
@@ -36,8 +40,9 @@ class ClientMessageAdmin(admin.ModelAdmin):
 
 
 admin.site.register(About,AboutAdmin)
-admin.site.register(services,ServiceAdmin)
-admin.site.register(portfolio,PortfolioAdmin)
-admin.site.register(testimonial,TestimonialAdmin)
-admin.site.register(contact,ContactAdmin)
-admin.site.register(client_message,ClientMessageAdmin)
+admin.site.register(Services,ServiceAdmin)
+admin.site.register(Portfolio_category)
+admin.site.register(Portfolio,PortfolioAdmin)
+admin.site.register(Testimonial,TestimonialAdmin)
+admin.site.register(Contact,ContactAdmin)
+admin.site.register(Client_message,ClientMessageAdmin)

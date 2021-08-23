@@ -20,7 +20,7 @@ class About(models.Model):
 
 
 
-class services(models.Model):
+class Services(models.Model):
     service_name = models.CharField(max_length=256)
     service_text = models.CharField(max_length=512)
 
@@ -31,9 +31,18 @@ class services(models.Model):
         return self.service_name
 
 
-
-class portfolio(models.Model):
+class Portfolio_category(models.Model):
     category = models.CharField(max_length=64)
+
+    class Meta:
+        verbose_name_plural = 'Portfolio Category'
+
+    def __str__(self):
+        return self.category
+
+
+class Portfolio(models.Model):
+    category = models.ForeignKey(Portfolio_category,on_delete=models.CASCADE)
     project_image = models.ImageField(upload_to = "project_image")
     project_name = models.CharField(max_length=128)
     project_details = models.TextField()
@@ -49,7 +58,7 @@ class portfolio(models.Model):
 
 
 
-class testimonial(models.Model):
+class Testimonial(models.Model):
     client_name = models.CharField(max_length=64)
     client_title = models.CharField(max_length=128,blank=True,null=True)
     client_image = models.ImageField(upload_to = "client_images",blank=True,null=True)
@@ -65,7 +74,7 @@ class testimonial(models.Model):
 
 
 
-class contact(models.Model):
+class Contact(models.Model):
     facebook_url = models.URLField(blank=True,null=True)
     twitter_url = models.URLField(blank=True,null=True)
     instagram_url = models.URLField(blank=True,null=True)
@@ -86,7 +95,7 @@ class contact(models.Model):
 
 
 
-class client_message(models.Model):
+class Client_message(models.Model):
     name = models.CharField(max_length=64)
     email = models.EmailField()
     subject = models.CharField(max_length=128)

@@ -5,10 +5,10 @@
 
  <!-- ======= Hero Section ======= -->
  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <img src="{% static '' %}assets/img/hero-bg.jpg" style="width: 100%; height: 100vh;" alt="">
+    <img src="/media/{{ about.home_bg_image }}" style="width: 100%; height: 100vh;" alt="">
     <div class="hero-container" data-aos="fade-in">
-      <h1>Laura Thomson</h1>
-      <h1>I'm <span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer"></span></h1>
+      <h1>SAJJAD HOSSAIN</h1>
+      <h1>I'm <span class="typed" data-typed-items="PYTHON OR DJANGO DEVELOPER, REACT DEVELOPER"></span></h1>
       <a href="#about" class="btn-scroll scrollto" title="Scroll Down"><i class="bx bx-chevron-down"></i></a>
     </div>
 </section><!-- End Hero -->
@@ -27,7 +27,7 @@
 
       <div class="row">
         <div class="image col-lg-4 d-flex align-items-stretch justify-content-center justify-content-lg-start" data-aos="fade-up">
-          <img src="{% static '' %}assets/img/me.jpg" style="width:100%;" alt="image">
+          <img src="/media/{{ about.about_img }}" style="width:100%;" alt="image">
         </div>
         <div class="col-lg-8 d-flex flex-column align-items-stretch">
           <div class="content ps-lg-4 d-flex flex-column justify-content-center" data-aos="fade-up">
@@ -53,15 +53,15 @@
               <div class="col-md-6 mt-5 d-md-flex align-items-md-stretch">
                 <div class="count-box">
                   <i class="bi bi-emoji-smile" style="color: #20b38e;"></i>
-                  <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+                  <span data-purecounter-start="0" data-purecounter-end="{{ about.happy_client }}" data-purecounter-duration="1" class="purecounter"></span>
                   <p><strong>Happy Clients</strong> consequuntur voluptas nostrum aliquid ipsam architecto ut.</p>
                 </div>
               </div>
 
               <div class="col-md-6 mt-5 d-md-flex align-items-md-stretch">
                 <div class="count-box">
-                  <i class="bi bi-emoji-smile" style="color: #8a1ac2;"></i>
-                  <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+                  <i class="bi bi-bounding-box" style="color: #8a1ac2;"></i>
+                  <span data-purecounter-start="0" data-purecounter-end="{{ about.number_of_projects }}" data-purecounter-duration="1" class="purecounter"></span>
                   <p><strong>Projects</strong> adipisci atque cum quia aspernatur totam laudantium et quia dere tan</p>
                 </div>
               </div>
@@ -69,7 +69,7 @@
               <div class="col-md-6 mt-5 d-md-flex align-items-md-stretch">
                 <div class="count-box">
                   <i class="bi bi-clock" style="color: #2cbdee;"></i>
-                  <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1" class="purecounter"></span>
+                  <span data-purecounter-start="0" data-purecounter-end="{{ about.year_of_experience }}" data-purecounter-duration="1" class="purecounter"></span>
                   <p><strong>Years of experience</strong> aut commodi quaerat modi aliquam nam ducimus aut voluptate non vel</p>
                 </div>
               </div>
@@ -77,7 +77,7 @@
               <div class="col-md-6 mt-5 d-md-flex align-items-md-stretch">
                 <div class="count-box">
                   <i class="bi bi-award" style="color: #ffb459;"></i>
-                  <span data-purecounter-start="0" data-purecounter-end="16" data-purecounter-duration="1" class="purecounter"></span>
+                  <span data-purecounter-start="0" data-purecounter-end="{{ about.number_of_awards }}" data-purecounter-duration="1" class="purecounter"></span>
                   <p><strong>Awards</strong> rerum asperiores dolor alias quo reprehenderit eum et nemo pad der</p>
                 </div>
               </div>
@@ -124,41 +124,17 @@
         <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
       </div>
 
-      <div class="row">
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+      <div class="row justify-content-center ">
+        {% for service in services %}
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch  mb-5 mb-lg-0">
           <div class="icon-box" data-aos="fade-up">
-            <div class="icon"><i class="bx bxl-dribbble"></i></div>
-            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+            <div class="icon"><i class="bx {% cycle 'bxl-dribbble'  'bx-file ' 'bx-tachometer'  'bx-world' %}"></i></div>
+            <h4 class="title"><a href="">{{ service.service_name }}</a></h4>
+            <p class="description">{{ service.service_text }}</p>
           </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-          <div class="icon-box" data-aos="fade-up"  data-aos-delay="100">
-            <div class="icon"><i class="bx bx-file"></i></div>
-            <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-          <div class="icon-box" data-aos="fade-up">
-            <div class="icon"><i class="bx bx-tachometer"></i></div>
-            <h4 class="title"><a href="">Magni Dolores</a></h4>
-            <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-          <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon"><i class="bx bx-world"></i></div>
-            <h4 class="title"><a href="">Nemo Enim</a></h4>
-            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-          </div>
-        </div>
-
+        </div>         
+        {% endfor %}
       </div>
-
     </div>
   </section><!-- End My Services Section -->
 
@@ -176,7 +152,7 @@
 
       <div class="row">
         <div class="col-lg-6"  data-aos="fade-up">
-          <h3 class="resume-title">Sumary</h3>
+          <!-- <h3 class="resume-title">Sumary</h3>
           <div class="resume-item pb-0">
             <h4>Alice Barkley</h4>
             <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.</em></p>
@@ -187,7 +163,7 @@
               <li>alice.barkley@example.com</li>
             </ul>
             </p>
-          </div>
+          </div> -->
 
           <h3 class="resume-title">Education</h3>
           <div class="resume-item">
@@ -218,7 +194,7 @@
             </ul>
             </p>
           </div>
-          <div class="resume-item">
+          <!-- <div class="resume-item">
             <h4>Graphic design specialist</h4>
             <h5>2017 - 2018</h5>
             <p><em>Stepping Stone Advertising, New York, NY</em></p>
@@ -230,7 +206,7 @@
               <li>Created 4+ design presentations and proposals a month for clients and account managers</li>
             </ul>
             </p>
-          </div>
+          </div> -->
         </div>
       </div>
 
@@ -251,7 +227,7 @@
       <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up">
         <li data-filter="*" class="filter-active">All</li>
         <li data-filter=".filter-app">App</li>
-        <li data-filter=".filter-card">Card</li>
+        
         <li data-filter=".filter-web">Web</li>
       </ul>
 
