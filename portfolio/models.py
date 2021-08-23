@@ -96,7 +96,7 @@ class Contact(models.Model):
 
 
 class Client_message(models.Model):
-    name = models.CharField(max_length=64)
+    name = models.CharField(max_length=64,)
     email = models.EmailField()
     subject = models.CharField(max_length=128)
     message = models.TextField()

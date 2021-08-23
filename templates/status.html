@@ -1,0 +1,22 @@
+{% extends "inner_base.html" %}
+{% load static %}
+{% block page_name %}
+  status
+{% endblock page_name %}
+
+{% block inner_body %}
+
+<center>
+  {% if messages %}
+  {% for message in messages %}
+  <div style="width:50%;" {% if message.tags %} class="shadow-lg p-3 mb-5 bg-{{message.tags}} rounded" {% endif %}>
+    <h3>{{message}}</h3>
+  </div>   
+  {% endfor %}    
+  {% endif %}
+  <div>
+    <a href="{% url 'portfolio:index' %}" class="btn btn-danger">Back to Home</a>
+  </div>
+
+</center>
+{% endblock inner_body %}

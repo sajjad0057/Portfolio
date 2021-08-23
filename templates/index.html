@@ -32,7 +32,11 @@
         <div class="col-lg-8 d-flex flex-column align-items-stretch">
           <div class="content ps-lg-4 d-flex flex-column justify-content-center" data-aos="fade-up">
             <div class="row">
-              <div class="col-lg-6">
+              <div class="shadow-lg p-3 mb-5 bg-warning rounded">
+                {{about.about_details|safe}}
+
+              </div>
+              <!-- <div class="col-lg-6">
                 <ul>
                   <li><i class="bi bi-chevron-right"></i> <strong>Name:</strong> <span>Laura Thomso</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.example.com</span></li>
@@ -47,7 +51,7 @@
                   <li><i class="bi bi-chevron-right"></i> <strong>PhEmailone:</strong> <span>email@example.com</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
                 </ul>
-              </div>
+              </div> -->
             </div>
             <div class="row mt-n4">
               <div class="col-md-6 mt-5 d-md-flex align-items-md-stretch">
@@ -226,102 +230,30 @@
 
       <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up">
         <li data-filter="*" class="filter-active">All</li>
-        <li data-filter=".filter-app">App</li>
+        {% for category in portfolio_cat %}
+        <li data-filter=".filter-{{category}}">{{category}}</li>
+        {% endfor %}
+        <!-- <li data-filter=".filter-app">App</li>
         
-        <li data-filter=".filter-web">Web</li>
+        <li data-filter=".filter-web">Web</li> -->
       </ul>
 
       <div class="row portfolio-container" data-aos="fade-up">
 
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <div class="portfolio-img"><img src="{% static 'assets/img/portfolio/portfolio-1.jpg' %}" class="img-fluid" alt=""></div>
-          <div class="portfolio-info">
-            <h4>App 1</h4>
-            <p>App</p>
-            <a href="{% static 'assets/img/portfolio/portfolio-1.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-          </div>
-        </div>
+        {% for p in portfolio %}
 
-        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-          <div class="portfolio-img"><img src="{% static 'assets/img/portfolio/portfolio-2.jpg' %}" class="img-fluid" alt=""></div>
+        <div class="col-lg-4 col-md-6 portfolio-item filter-{{p.category}}">
+          <div class="portfolio-img"><img src="/media/{{p.project_image}}" class="img-fluid" alt=""></div>
           <div class="portfolio-info">
-            <h4>Web 3</h4>
-            <p>Web</p>
-            <a href="{% static 'assets/img/portfolio/portfolio-2.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            <h4>{{p.project_name}}</h4>
+            <p>{{p.project_name}}</p>
+            <a href="/media/{{p.project_image}}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="{{p.project_name}}"><i class="bx bx-plus"></i></a>
+            <a href="#" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
           </div>
         </div>
+          
+        {% endfor %}
 
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <div class="portfolio-img"><img src="{% static 'assets/img/portfolio/portfolio-3.jpg' %}" class="img-fluid" alt=""></div>
-          <div class="portfolio-info">
-            <h4>App 2</h4>
-            <p>App</p>
-            <a href="{% static 'assets/img/portfolio/portfolio-3.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-          <div class="portfolio-img"><img src="{% static 'assets/img/portfolio/portfolio-4.jpg' %}" class="img-fluid" alt=""></div>
-          <div class="portfolio-info">
-            <h4>Card 2</h4>
-            <p>Card</p>
-            <a href="{% static 'assets/img/portfolio/portfolio-4.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-          <div class="portfolio-img"><img src="{% static 'assets/img/portfolio/portfolio-5.jpg' %}" class="img-fluid" alt=""></div>
-          <div class="portfolio-info">
-            <h4>Web 2</h4>
-            <p>Web</p>
-            <a href="{% static 'assets/img/portfolio/portfolio-5.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <div class="portfolio-img"><img src="{% static 'assets/img/portfolio/portfolio-6.jpg' %}" class="img-fluid" alt=""></div>
-          <div class="portfolio-info">
-            <h4>App 3</h4>
-            <p>App</p>
-            <a href="{% static 'assets/img/portfolio/portfolio-6.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-          <div class="portfolio-img"><img src="{% static 'assets/img/portfolio/portfolio-7.jpg' %}" class="img-fluid" alt=""></div>
-          <div class="portfolio-info">
-            <h4>Card 1</h4>
-            <p>Card</p>
-            <a href="{% static 'assets/img/portfolio/portfolio-7.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-          <div class="portfolio-img"><img src="{% static 'assets/img/portfolio/portfolio-8.jpg' %}" class="img-fluid" alt=""></div>
-          <div class="portfolio-info">
-            <h4>Card 3</h4>
-            <p>Card</p>
-            <a href="{% static 'assets/img/portfolio/portfolio-8.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-          <div class="portfolio-img"><img src="{% static 'assets/img/portfolio/portfolio-9.jpg' %}" class="img-fluid" alt=""></div>
-          <div class="portfolio-info">
-            <h4>Web 3</h4>
-            <p>Web</p>
-            <a href="{% static 'assets/img/portfolio/portfolio-9.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-          </div>
-        </div>
 
       </div>
 
@@ -335,70 +267,23 @@
         <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
           <div class="swiper-wrapper">
 
+            {% for t in testimonial %}
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="{% static 'assets/img/testimonials/testimonials-1.jpg' %}" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
+                <img src="/media/{{t.client_image}}" class="testimonial-img" alt="">
+                <h3>{{t.client_name}}</h3>
+                <h4>{{t.client_title}}</h4>
                 <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  
+                    {{t.client_comment|safe}}
+                  
                 </p>
               </div>
             </div><!-- End testimonial item -->
+              
+            {% endfor %}
 
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="{% static 'assets/img/testimonials/testimonials-2.jpg' %}" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
 
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="{% static 'assets/img/testimonials/testimonials-3.jpg' %}" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="{% static 'assets/img/testimonials/testimonials-4.jpg' %}" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="{% static 'assets/img/testimonials/testimonials-5.jpg' %}" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
 
           </div>
           <div class="swiper-pagination"></div>
@@ -579,7 +464,7 @@
 
       <div class="row">
 
-        <div class="col-lg-6">
+        <div class="col-lg-6 mb-2">
 
           <div class="row">
             <div class="col-md-12">
@@ -587,11 +472,10 @@
                 <i class="bx bx-share-alt"></i>
                 <h3>Social Profiles</h3>
                 <div class="social-links">
-                  <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                  <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                  <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                  <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
-                  <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                  <a href="{{contact.twitter_url}}" class="twitter"><i class="bi bi-twitter"></i></a>
+                  <a href="{{contact.facebook_url}}" class="facebook"><i class="bi bi-facebook"></i></a>
+                  <a href="{{contact.instagram_url}}" class="instagram"><i class="bi bi-instagram"></i></a>
+                  <a href="{{contact.linkdin_url}}" class="linkedin"><i class="bi bi-linkedin"></i></a>
                 </div>
               </div>
             </div>
@@ -599,42 +483,41 @@
               <div class="info-box mt-4" data-aos="fade-up" data-aos-delay="100">
                 <i class="bx bx-envelope"></i>
                 <h3>Email Me</h3>
-                <p>contact@example.com</p>
+                <p><b>{{contact.Email}}</b></p>
               </div>
             </div>
             <div class="col-md-6">
               <div class="info-box mt-4" data-aos="fade-up" data-aos-delay="100">
                 <i class="bx bx-phone-call"></i>
                 <h3>Call Me</h3>
-                <p>+1 5589 55488 55</p>
+                <p><b>{{contact.phone}}</b></p>
               </div>
             </div>
           </div>
 
         </div>
 
-        <div class="col-lg-6">
-          <form action="forms/contact.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-6 mb-2">
+
+          <form action="" method="POST" role="form" class="shadow-lg p-3 mb-5 bg-body rounded" data-aos="fade-up" data-aos-delay="100">
+            {% csrf_token %}
             <div class="row">
-              <div class="col-md-6 form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+              <div class="col-md-6">
+                {{forms.name}}
               </div>
-              <div class="col-md-6 form-group mt-3 mt-md-0">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+              <div class="col-md-6  mt-3 mt-md-0">
+                {{forms.email}}
               </div>
             </div>
-            <div class="form-group mt-3">
-              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+            <div class="mt-3">
+              {{forms.subject}}
             </div>
-            <div class="form-group mt-3">
-              <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+            <div class="my-3" >
+              {{forms.message}}
             </div>
-            <div class="my-3">
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your message has been sent. Thank you!</div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-warning">Send Message</button>
             </div>
-            <div class="text-center"><button type="submit">Send Message</button></div>
           </form>
         </div>
 
