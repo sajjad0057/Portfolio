@@ -21,7 +21,7 @@ def index(request):
         forms = ClientMessageForm()
         blogs = Blog.objects.all()[:3]
     except:
-        return HttpResponse('<h2>Some thing wrong ! it might be trabule in your database table</h2>')
+        return HttpResponse('<h2>Something wrong ! it might be problem in your database table, please insert all table data</h2>')
     
     if request.method == 'POST':
         form = ClientMessageForm(request.POST)

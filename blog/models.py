@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
+from django.urls import reverse # Used to generate URLs by reversing the URL patterns
 
 # Create your models here.
 
@@ -10,7 +11,7 @@ class Blog(models.Model):
     title = models.CharField(max_length=256)
     details = models.TextField()
     image = models.ImageField(upload_to = 'blogs_image',blank=True,null = True)
-    slug = models.SlugField(max_length=256,unique=True,allow_unicode=True,blank=True,null=True)
+    slug = models.SlugField(max_length=256,unique=True,allow_unicode=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -40,7 +41,6 @@ class Blog(models.Model):
 
 
 class Comment(models.Model):
-
     blog = models.ForeignKey(Blog,on_delete=models.CASCADE)
     name = models.CharField(max_length=256)
     comment = models.TextField()
@@ -51,5 +51,10 @@ class Comment(models.Model):
 
     class Meta:
         verbose_name_plural = 'Comments'
+
+
+    # def get_absolute_url(self):
+    #     return reverse('blog:blog-detail', args=[self.blog.id,])
+
 
 
