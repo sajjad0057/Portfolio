@@ -302,63 +302,29 @@
           <p>LATEST BLOG</p>
         </div>
         <div class="journal-block">
-          <div class="row">
-
+          <div class="row justify-content-center">
+            {% for blog in blogs %}
             <div class="col-lg-4 col-md-6">
               <div class="journal-info" data-aos="fade-up">
 
-                <a href="blog-single.html"><img src="{% static 'assets/img/blog-post-1.jpg' %}" class="img-responsive" alt="img"></a>
+                <a href=""><img src="/media/{{blog.image}}" style="max-height: 200px; width: 100%;" class="img-responsive" alt="img"></a>
 
                 <div class="journal-txt">
 
-                  <h4><a href="blog-single.html">SO LETS MAKE THE MOST IS BEAUTIFUL</a></h4>
-                  <p class="separator">To an English person, it will seem like simplified English
-                  </p>
-
+                  <h4><a href="">{{blog.title}}</a></h4>
                 </div>
 
               </div>
             </div>
-
-            <div class="col-lg-4 col-md-6">
-              <div class="journal-info" data-aos="fade-up" data-aos-delay="100">
-
-                <a href="blog-single.html"><img src="{% static 'assets/img/blog-post-2.jpg' %}" class="img-responsive" alt="img"></a>
-
-                <div class="journal-txt">
-
-                  <h4><a href="blog-single.html">WE'RE GONA MAKE DREAMS COMES</a></h4>
-                  <p class="separator">To an English person, it will seem like simplified English
-                  </p>
-
-                </div>
-
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-              <div class="journal-info"  data-aos="fade-up">
-
-                <a href="blog-single.html"><img src="{% static 'assets/img/blog-post-3.jpg' %}" class="img-responsive" alt="img"></a>
-
-                <div class="journal-txt">
-
-                  <h4><a href="blog-single.html">NEW LIFE CIVILIZATIONS TO BOLDLY</a></h4>
-                  <p class="separator">To an English person, it will seem like simplified English
-                  </p>
-
-                </div>
-
-              </div>
-            </div>
+              
+            {% endfor %}
+          </div>
+          <div class="text-center" data-aos="fade-up" data-aos-delay="100" >
+            <a href="{% url 'blog:blog-list' %}" class="btn btn-info">All Blogs</a>
 
           </div>
         </div>
       </div>
-
-
-    
-
     </section><!-- End Journal Section -->
 
   <!-- ======= Pricing Section ======= -->

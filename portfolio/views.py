@@ -1,5 +1,6 @@
 from django.shortcuts import HttpResponse, redirect, render
-from .models import About,Services,Portfolio,Testimonial,Contact,Client_message,Portfolio_category
+from .models import About,Services,Portfolio,Testimonial,Contact,Portfolio_category
+from blog.models import Blog
 from .forms import ClientMessageForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -18,6 +19,7 @@ def index(request):
         #contact = Contact.objects.all()[0]
         contact = Contact.objects.first()
         forms = ClientMessageForm()
+        blogs = Blog.objects.all()[:3]
     except:
         return HttpResponse('<h2>Some thing wrong ! it might be trabule in your database table</h2>')
     
@@ -35,7 +37,7 @@ def index(request):
 
 
     return render(request,'index.html',{'about':about,'services':services,'portfolio_cat':portfolio_cat,
-            'portfolio':portfolio,'testimonial':testimonial,'contact':contact,'forms':forms})
+            'portfolio':portfolio,'testimonial':testimonial,'contact':contact,'forms':forms,'blogs':blogs})
 
     
 

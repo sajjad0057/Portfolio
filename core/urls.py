@@ -9,7 +9,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('welcome/',include('portfolio.urls')),
-    path('blog/',include('blog.urls')),
+    path('blogs/',include('blog.urls')),
     path('', RedirectView.as_view(url='welcome/', permanent=True)),  # initialy  redirect application with 'catalog/' url 
     path('summernote/', include('django_summernote.urls')),
 
