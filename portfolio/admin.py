@@ -7,7 +7,7 @@ from django_summernote.admin import SummernoteModelAdmin
 
 class AboutAdmin(SummernoteModelAdmin):
     summernote_fields = ('about_details',)
-    list_display = ('home_bg_image','about_img','happy_client','year_of_experience','number_of_projects','number_of_awards')
+    # list_display = ('home_bg_image','about_img','happy_client','year_of_experience','number_of_projects','number_of_awards')
 
 
 class ServiceAdmin(admin.ModelAdmin):

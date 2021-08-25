@@ -4,6 +4,8 @@ from blog.models import Blog
 from .forms import ClientMessageForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.views.generic import DetailView
+
 
 # Create your views here.
 
@@ -39,5 +41,12 @@ def index(request):
     return render(request,'index.html',{'about':about,'services':services,'portfolio_cat':portfolio_cat,
             'portfolio':portfolio,'testimonial':testimonial,'contact':contact,'forms':forms,'blogs':blogs})
 
+
+
+  
     
 
+class PortfolioDetails(DetailView):
+    model = Portfolio
+    context_object_name = 'portfolio'
+    template_name = 'portfolio-details.html'
