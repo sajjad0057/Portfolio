@@ -1,5 +1,5 @@
 from django.shortcuts import HttpResponse, redirect, render
-from .models import About,Services,Portfolio,Testimonial,Contact,Portfolio_category
+from .models import About,Services,Portfolio,Testimonial,Portfolio_category
 from blog.models import Blog
 from .forms import ClientMessageForm
 from django.contrib.auth.decorators import login_required
@@ -18,8 +18,6 @@ def index(request):
         portfolio_cat = Portfolio_category.objects.all()
         portfolio = Portfolio.objects.all()
         testimonial = Testimonial.objects.all()
-        #contact = Contact.objects.all()[0]
-        contact = Contact.objects.first()
         forms = ClientMessageForm()
         blogs = Blog.objects.all()[:3]
     except:
@@ -39,7 +37,7 @@ def index(request):
 
 
     return render(request,'index.html',{'about':about,'services':services,'portfolio_cat':portfolio_cat,
-            'portfolio':portfolio,'testimonial':testimonial,'contact':contact,'forms':forms,'blogs':blogs})
+            'portfolio':portfolio,'testimonial':testimonial,'forms':forms,'blogs':blogs})
 
 
 

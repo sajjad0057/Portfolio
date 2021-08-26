@@ -49,10 +49,12 @@
           <h2>SAJJAD</h2>
           <ol>
             <li><a href="{% url 'portfolio:index' %}">Home</a></li>
-            <li>{% block page_name %}
-            
-                {% endblock page_name %}
+            <li>
+              {% block page_name %}
+
+              {% endblock page_name %}
             </li>
+
           </ol>
         </div>
 
@@ -72,14 +74,14 @@
 
   <!-- ======= Footer ======= -->
   <div id="footer" class="text-center">
-    <div class="container">
+    <div class="container" data-aos="fade-in">
       <div class="socials-media text-center">
 
         <ul class="list-unstyled">
-          <li><a href="#"><i class="bi bi-facebook"></i></a></li>
-          <li><a href="#"><i class="bi bi-twitter"></i></a></li>
-          <li><a href="#"><i class="bi bi-instagram"></i></a></li>
-          <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
+          <li><a href="{{contact.facebook_url}}"><i class="bi bi-facebook"></i></a></li>
+          <li><a href="{{contact.twitter_url}}"><i class="bi bi-twitter"></i></a></li>
+          <li><a href="{{contact.instagram_url}}"><i class="bi bi-instagram"></i></a></li>
+          <li><a href="{{contact.linkdin_url}}"><i class="bi bi-linkedin"></i></a></li>
         </ul>
 
       </div>
@@ -98,15 +100,11 @@
 
     </div>
   </div><!-- End Footer -->
-
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
 
   <!-- Bootstrap js -->
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-
-
 
   <!-- Vendor JS Files -->
   <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
