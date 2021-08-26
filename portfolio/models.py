@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models.aggregates import Max
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 
@@ -20,6 +20,21 @@ class About(models.Model):
         return "abouts"
 
 
+
+
+class Skill(models.Model):
+    title = models.CharField(max_length=120)
+    skill_value = models.PositiveIntegerField(
+        default=0, 
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        help_text='set your skill value out of 100'
+        )
+
+    class Meta:
+        verbose_name_plural = 'Skills Section'
+
+    def __str__(self):
+        return self.title
 
 
 
