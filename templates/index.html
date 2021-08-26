@@ -209,7 +209,7 @@
       <div class="section-title" data-aos="fade-in">
         <span>My Portfolio</span>
         <h2>My Portfolio</h2>
-        <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
+        <p>LATEST PROJECTS</p>
       </div>
 
       <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up">
@@ -238,6 +238,9 @@
           
         {% endfor %}
 
+      </div>
+      <div class="text-center" data-aos="fade-up" data-aos-delay="100" >
+        <a href="{% url 'portfolio:portfolio-list' %}" class="btn btn-outline-warning">More Portfolios </a>
       </div>
 
     </div>
@@ -297,8 +300,7 @@
             {% endfor %}
           </div>
           <div class="text-center" data-aos="fade-up" data-aos-delay="100" >
-            <a href="{% url 'blog:blog-list' %}" class="btn btn-outline-warning">All Blogs</a>
-
+            <a href="{% url 'blog:blog-list' %}" class="btn btn-outline-warning">More Blogs</a>
           </div>
         </div>
       </div>

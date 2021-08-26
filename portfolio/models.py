@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.aggregates import Max
 
 # Create your models here.
 
@@ -17,6 +18,10 @@ class About(models.Model):
 
     def __str__(self):
         return "abouts"
+
+
+
+
 
 
 
@@ -52,6 +57,7 @@ class Portfolio(models.Model):
 
     class Meta:
         verbose_name_plural = 'Portfolio Section'
+        ordering = ("-id",)
 
     def __str__(self):
         return self.project_name

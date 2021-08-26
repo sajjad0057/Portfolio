@@ -1,10 +1,11 @@
+from django.db.models.base import Model
 from django.shortcuts import HttpResponse, redirect, render
 from .models import About,Services,Portfolio,Testimonial,Portfolio_category
 from blog.models import Blog
 from .forms import ClientMessageForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.views.generic import DetailView
+from django.views.generic import DetailView,ListView
 
 
 # Create your views here.
@@ -16,7 +17,7 @@ def index(request):
         about = About.objects.first()
         services = Services.objects.all()
         portfolio_cat = Portfolio_category.objects.all()
-        portfolio = Portfolio.objects.all()
+        portfolio = Portfolio.objects.all()[:6]
         testimonial = Testimonial.objects.all()
         forms = ClientMessageForm()
         blogs = Blog.objects.all()[:3]
@@ -41,7 +42,20 @@ def index(request):
 
 
 
-  
+
+
+class PortfolioList(ListView):
+    model = Portfolio
+    paginate_by = 8
+    context_object_name = 'portfolio'
+    template_name = 'portfolio.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['portfolio_cat'] = Portfolio_category.objects.all()
+        return context
+
+
     
 
 class PortfolioDetails(DetailView):
