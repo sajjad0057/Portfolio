@@ -37,7 +37,7 @@ def BlogDetails(request,slug):
             form=forms.save(commit=False)
             form.blog = blog    
             form.save()
-            messages.warning(request,f'{name} Thanks for your comment ')
+            messages.warning(request,f'{name} Thanks for your comment !')
             return HttpResponseRedirect(reverse('blog:blog-detail',kwargs={'slug':slug}))
         else:
             messages.danger("Something Wrong ! your Comment doesn't submitted !")
