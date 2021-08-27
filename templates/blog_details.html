@@ -1,13 +1,11 @@
 {% extends "inner_base.html" %}
 {% load static %}
-
 {% block page_name %}
  Blog Details
 {% endblock page_name %}
 
 {% block inner_body %}
 
-<main id="main">
 
     <!-- ======= Breadcrumbs Section ======= -->
     <section class="breadcrumbs">
@@ -57,8 +55,8 @@
                     <hr>
                     {% for comment in blog.comment_set.all %}
                     <div class="m-2">
-                        <span><i class="fas fa-comments"></i>  </span> <i>{{comment.name}}</i> <br>
-                        <p>{{comment.comment}}</p>
+                        <span><img src="/media/user.png" class="rounded-circle" style="max-height: 35px; max-width:35px;" alt="user"></span><i> &nbsp; {{comment.name}}</i> <br>
+                        <p>&nbsp; &nbsp; &nbsp;<span><i class="fas fa-comments"></i> </span> &nbsp;{{comment.comment}}</p>
                     </div>
                     {% endfor %}
                     
@@ -92,6 +90,6 @@
       </div>
     </section><!-- End Portfolio Details Section -->
 
-  </main><!-- End #main -->
+ 
   
 {% endblock inner_body %}

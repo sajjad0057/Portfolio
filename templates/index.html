@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}
+  SAJJAD HOSSAIN | INDEX
+{% endblock title %}
+
 {% block body_block %}
 
 <!-- ======= Hero Section ======= -->
@@ -45,7 +49,7 @@
           <div class="about-descr">          
             <p class="p-heading">{{about.about_details|safe}}</p>
             {% if about.Cv %}
-            <div class="text-center p-2" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-center p-2" data-aos="fade-up" data-aos-delay="200">
               <a 
               href="{{about.Cv.url}}" 
               class="btn btn-outline-warning"

@@ -6,18 +6,28 @@
 
 {% block inner_body %}
 
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center" data-aos="fade-in">
+          <h2>{{portfolio.project_name}}</h2>
+        </div>
+
+      </div>
+    </section><!-- Breadcrumbs Section -->
+
   <!-- ======= Portfolio Details Section ======= -->
   <section id="portfolio-details" class="portfolio-details">
+
     <div class="container">
-
-      <div class="row gy-4">
-
+     <div class="row gy-4">
         <div class="col-lg-8">
           <div class="portfolio-details-slider swiper-container" data-aos="fade-up">
             <div class="swiper-wrapper align-items-center" >
 
               <div class="swiper-slide">
-                <img src="/media/{{portfolio.project_image}}" alt="">
+                <img src="/media/{{portfolio.project_image}}" style="max-height: 500px; width: 100%;" alt="">
               </div>
 
             </div>
@@ -29,13 +39,13 @@
           <div class="portfolio-info" data-aos="fade-up" data-aos-delay="100">
             <h3>Project information</h3>
             <ul>
-              <li><strong>Category</strong>:{{portfolio.category}}</li>
-              <!-- <li><strong>Client</strong>: ASU Company</li> -->
+              <li><strong>Category : </strong>{{portfolio.category}}</li>
+              <li><strong>Project Name : </strong>{{portfolio.project_name}}</li>
               {% if portfolio.project_date %}
-              <li><strong>Project date</strong>:{{portfolio.project_date|date}}</li>
+              <li><strong>Project date : </strong>{{portfolio.project_date|date}}</li>
               {% endif %}
               {% if portfolio.project_url %}
-              <li><strong>Project URL</strong>: <a href="{{portfolio.project_url}}">{{portfolio.project_url}}</a></li>
+              <li><strong>Project URL : </strong> <a href="{{portfolio.project_url}}">{{portfolio.project_url}}</a></li>
               {% endif %}     
             </ul>
           </div>

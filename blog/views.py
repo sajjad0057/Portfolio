@@ -10,7 +10,7 @@ from .forms import CommentForm
 
 class BlogList(ListView):
     model = Blog
-    paginate_by = 3
+    paginate_by = 6
     context_object_name = 'blog'
     template_name = 'blog.html'
 
@@ -27,7 +27,7 @@ class BlogList(ListView):
 
 def BlogDetails(request,slug):
     blog = get_object_or_404(Blog,slug=slug)
-    print('blog ---->',blog)
+    #print('blog ---->',blog)
     forms = CommentForm()
     if request.method == 'POST':
         forms = CommentForm(request.POST)

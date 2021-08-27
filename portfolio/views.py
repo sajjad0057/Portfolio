@@ -3,14 +3,13 @@ from django.shortcuts import HttpResponse, redirect, render
 from .models import About,Services,Portfolio,Testimonial,Portfolio_category,Skill,Resume_Category
 from blog.models import Blog
 from .forms import ClientMessageForm
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.views.generic import DetailView,ListView
 
 
 # Create your views here.
 
-@login_required
+
 def index(request):
     try:
         #about = About.objects.all()[0]
@@ -30,11 +29,11 @@ def index(request):
         form = ClientMessageForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['name']
-            # form.save()
-            messages.warning(request,f'{ name } your message send successfully')
+            form.save()
+            messages.warning(request,f'{ name } your message has been send successfully ! Thank You')
             return render(request,'status.html')
         else:
-            messages.warning(request,"your message don't send ! Something wrong")
+            messages.warning(request,"Something wrong ! Sorry : your message  send failed !")
             return render(request,'status.html')
 
 

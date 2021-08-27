@@ -46,7 +46,7 @@ class ContactAdmin(admin.ModelAdmin):
 
 
 class ClientMessageAdmin(admin.ModelAdmin):
-    list_display = ('name','send_time')
+    list_display = ('name','subject','send_time')
 
 
 admin.site.register(About,AboutAdmin)
