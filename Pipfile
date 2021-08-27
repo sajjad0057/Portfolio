@@ -8,6 +8,10 @@ django = "*"
 pillow = "*"
 django-summernote = "*"
 django-cleanup = "*"
+whitenoise = "*"
+gunicorn = "*"
+psycopg2 = "*"
+django-heroku = "*"
 
 [dev-packages]
 

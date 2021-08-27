@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+# deploying
+import django_heroku
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +28,10 @@ SECRET_KEY = 'django-insecure-4ua+9t%l-&9iayudpp!n6kfo9jq2y(&qimlmyu_ub-h!8zcdp7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'sajjad-hossain.herokuapp.com',
+    '127.0.0.1',
+    ]
 
 
 # Application definition
@@ -53,6 +59,9 @@ SUMMERNOTE_THEME = 'bs4' # according to django-summernote documentation
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    #for deploy in heroku handle static files
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -87,10 +96,23 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+#for postgresql 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dfqlnkc8cm6dov',
+        'USER': 'trvxbrrbpmhuwg',
+        'PASSWORD': '79a4a930dbbb58e2a9acaafaf374ad87e272c1247d0093c1a58c98444226e1a8',
+        'HOST': 'ec2-18-209-153-180.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -133,7 +155,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [ BASE_DIR/'static' ]
+STATICFILES_DIRS = [ BASE_DIR /'static' ]
+
+#need for deploying
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+django_heroku.settings(locals())
 
 
 # handle image 
