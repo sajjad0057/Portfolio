@@ -1,6 +1,6 @@
 from django.db.models.base import Model
 from django.shortcuts import HttpResponse, redirect, render
-from .models import About,Services,Portfolio,Testimonial,Portfolio_category,Skill
+from .models import About,Services,Portfolio,Testimonial,Portfolio_category,Skill,Resume_Category
 from blog.models import Blog
 from .forms import ClientMessageForm
 from django.contrib.auth.decorators import login_required
@@ -17,6 +17,7 @@ def index(request):
         about = About.objects.first()
         skills = Skill.objects.all()
         services = Services.objects.all()
+        resume_cat = Resume_Category.objects.all()
         portfolio_cat = Portfolio_category.objects.all()
         portfolio = Portfolio.objects.all()[:6]
         testimonial = Testimonial.objects.all()
@@ -38,8 +39,8 @@ def index(request):
 
 
 
-    return render(request,'index.html',{'about':about,'skills':skills,'services':services,'portfolio_cat':portfolio_cat,
-            'portfolio':portfolio,'testimonial':testimonial,'forms':forms,'blogs':blogs})
+    return render(request,'index.html',{'about':about,'skills':skills,'services':services,'resume_cat':resume_cat,'portfolio_cat':portfolio_cat,
+                                        'portfolio':portfolio,'testimonial':testimonial,'forms':forms,'blogs':blogs})
 
 
 

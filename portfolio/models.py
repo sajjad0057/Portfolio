@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db.models.fields import CharField
 
 # Create your models here.
 
@@ -40,6 +41,33 @@ class Skill(models.Model):
 
 
 
+
+class Resume_Category(models.Model):
+    category = CharField(max_length=120,help_text='set your resume title - like as Education , Professional Experience')
+
+    class Meta:
+        verbose_name_plural = 'Resume Category'
+    
+    def __str__(self):
+        return self.category
+
+
+class Resume(models.Model):
+    category = models.ForeignKey(Resume_Category,on_delete=models.CASCADE)
+    title = models.CharField(max_length=150)
+    duration = models.CharField(max_length=20,help_text='set working durations like as , 2017 - 2020 or now')
+    location  = models.CharField(max_length=250,help_text='Set your institue or workspace name and location')
+    details = models.TextField(help_text='Set your position Details')
+
+
+    class Meta:
+        verbose_name_plural = 'Resume Section'
+
+    def __str__(self):
+        return self.title
+
+
+
 class Services(models.Model):
     service_name = models.CharField(max_length=256)
     service_text = models.CharField(max_length=512)
@@ -51,6 +79,10 @@ class Services(models.Model):
         return self.service_name
 
 
+
+
+
+
 class Portfolio_category(models.Model):
     category = models.CharField(max_length=64)
 
@@ -59,6 +91,10 @@ class Portfolio_category(models.Model):
 
     def __str__(self):
         return self.category
+
+
+
+
 
 
 class Portfolio(models.Model):
