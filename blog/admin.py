@@ -5,6 +5,13 @@ from .models import Blog,Comment
 
 # Register your models here.
 
+
+# change Admin panel title and description
+admin.site.site_header = 'Portfolio Admin'
+admin.site.site_title = 'Portfolio Admin'
+admin.site.index_title = 'Portfolio | Admin'
+
+
 # Apply summernote to all TextField in model.
 class BlogAdmin(SummernoteModelAdmin):  # instead of ModelAdmin
     summernote_fields = ('details',)
