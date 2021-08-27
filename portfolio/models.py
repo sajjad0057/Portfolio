@@ -6,9 +6,11 @@ from django.db.models.fields import CharField
 
 
 class About(models.Model):
+    title = models.CharField(max_length=400,blank=True,null=True,help_text="set your self-titles separated by comma and single whitespace ,likes Designer, Developer, bla, bla ")
     home_bg_image = models.ImageField(upload_to = 'about_images',verbose_name="Set home Background Image")
     about_img = models.ImageField(upload_to = 'about_images',verbose_name="Set about section image")
     about_details = models.TextField(verbose_name="Write Details about you")
+    Cv = models.FileField(upload_to='self_cv',blank=True,null=True,verbose_name = "Upload Your CV")
     happy_client = models.IntegerField(default=0)
     year_of_experience = models.IntegerField(default=0)
     number_of_projects = models.IntegerField(default=0)

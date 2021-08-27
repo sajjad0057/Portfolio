@@ -8,9 +8,9 @@
   <!-- <img src="assets/img/home-bg.jpg" style="width: 100%; height: 100vh;" alt=""> -->
   <div class="container">   
     <div class="hero-content" data-aos="fade-up">     
-      <h1>I'm <span class="typed" data-typed-items="Alex Smith, Designer, Developer, Freelancer, Photographer"></span></h1>
+      <h1>I'm <span class="typed" data-typed-items="{{about.title}}"></span></h1>
       <div data-aos="fade-right" data-aos-delay="100">
-        <p>Designer, Developer, Freelancer, Photographer</p>
+        <p>{{about.title}}</p>
       </div>
       <ul class="list-unstyled list-social" data-aos="fade-up" data-aos-delay="100">
         <li><a href="{{contact.facebook_url}}"><i class="bi bi-facebook"></i></a></li>
@@ -37,13 +37,25 @@
         <div class="col-lg-4" data-aos="fade-up">
           <div class="div-img-bg">
             <div class="about-img rounded">
-              <img src="/media/{{about.about_img}}" class="img-responsive rounded" alt="me">
+              <img src="{{about.about_img.url}}" class="img-responsive rounded" alt="me">
             </div>
           </div>
         </div>
         <div class="col-lg-7" data-aos="fade-up">
           <div class="about-descr">          
             <p class="p-heading">{{about.about_details|safe}}</p>
+            {% if about.Cv %}
+            <div class="text-center p-2" data-aos="fade-up" data-aos-delay="200">
+              <a 
+              href="{{about.Cv.url}}" 
+              class="btn btn-outline-warning"
+              download
+              >
+              download CV
+            </a>
+            </div>
+              
+            {% endif %}
           </div>
           <div class="row mt-n4 justify-content-center" data-aos="fade-up" data-aos-delay="100">
             <div class="col-sm-6 mt-5 d-flex align-items-stretch justify-content-center ">
