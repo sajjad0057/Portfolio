@@ -41,7 +41,7 @@
         <div class="col-lg-4" data-aos="fade-up">
           <div class="div-img-bg">
             <div class="about-img rounded">
-              <img src="{{about.about_img.url}}" class="img-responsive rounded" alt="me">
+              <img src="/media/{{about.about_img}}" class="img-responsive rounded" alt="me">  
             </div>
           </div>
         </div>
@@ -49,7 +49,7 @@
           <div class="about-descr">          
             <p class="p-heading">{{about.about_details|safe}}</p>
             {% if about.Cv %}
-                        <div class="text-center p-2" data-aos="fade-up" data-aos-delay="200">
+            <div class="text-center p-2" data-aos="fade-up" data-aos-delay="200">
               <a 
               href="{{about.Cv.url}}" 
               class="btn btn-outline-warning"
