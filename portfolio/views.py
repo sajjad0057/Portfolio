@@ -36,7 +36,8 @@ def index(request):
             messages.warning(request,"Something wrong ! Sorry : your message  send failed !")
             return render(request,'status.html')
 
-
+    if(testimonial.exists()==False):
+       return HttpResponse('<h2>Something went wrong ! Testimonial object is empty')
 
     return render(request,'index.html',{'about':about,'skills':skills,'services':services,'resume_cat':resume_cat,'portfolio_cat':portfolio_cat,
                                         'portfolio':portfolio,'testimonial':testimonial,'forms':forms,'blogs':blogs})
