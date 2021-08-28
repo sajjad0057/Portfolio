@@ -1,12 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block title %}
-  SAJJAD HOSSAIN | INDEX
+  SAJJAD HOSSAIN | index
 {% endblock title %}
 
-{% block body_block %}
 
+{% block body_block %}
 <!-- ======= Hero Section ======= -->
 <div id="hero" style='background: url("/media/{{about.home_bg_image}}") repeat scroll center center/cover'; class="home">
   <!-- <img src="assets/img/home-bg.jpg" style="width: 100%; height: 100vh;" alt=""> -->
@@ -16,12 +15,14 @@
       <div data-aos="fade-right" data-aos-delay="100">
         <p>{{about.title}}</p>
       </div>
+      {% if contact %}
       <ul class="list-unstyled list-social" data-aos="fade-up" data-aos-delay="100">
         <li><a href="{{contact.facebook_url}}"><i class="bi bi-facebook"></i></a></li>
         <li><a href="{{contact.twitter_url}}"><i class="bi bi-twitter"></i></a></li>
         <li><a href="{{contact.instagram_url}}"><i class="bi bi-instagram"></i></a></li>
         <li><a href="{{contact.linkdin_url}}"><i class="bi bi-linkedin"></i></a></li>
-      </ul>
+      </ul>        
+      {% endif %}
       <center><a href="#about" class="btn-scroll scrollto" title="Scroll Down"><i class="bx bx-chevron-down"></i></a></center>
     </div>
   </div>
@@ -94,6 +95,7 @@
         </div>
       </div>
       <!-- skill -->
+      {% if  skills %}
       <div class="skills-content ps-lg-4" data-aos="fade-up">
         {% for skill in skills %}
         <div class="progress">
@@ -101,11 +103,10 @@
           <div class="progress-bar-wrap">
             <div class="progress-bar" role="progressbar" aria-valuenow="{{skill.skill_value}}" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
-        </div>
-            
+        </div>           
         {% endfor %}
-
-      </div>
+      </div>     
+      {% endif %}
       <!-- end skill -->
     </div>
   </div><!-- End About Section -->
@@ -136,33 +137,33 @@
   </section><!-- End My Services Section -->
 
 
-  <!-- ======= My Resume Section ======= -->
-  <section id="resume" class="resume">
-    <div class="container">
-
-      <div class="section-title" data-aos="fade-in">
-        <span>My Resume</span>
-        <h2>My Resume</h2>
-        <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
-      </div>
-
-      <div class="row">
-        {% for category in resume_cat %}
-        <div class="col-lg-6"  data-aos="fade-up">
-          <h3 class="resume-title">{{category.category}}</h3>
-          {% for resume in category.resume_set.all %}
-          <div class="resume-item">
-            <h4>{{resume.title}}</h4>
-            <h5>{{resume.duration}}</h5>
-            <p><em>{{resume.location}}</em></p>
-            <p>{{resume.details|safe}}</p>
-          </div>           
-          {% endfor %}
+  {% if resume_cat %}
+    <!-- ======= My Resume Section ======= -->
+    <section id="resume" class="resume">
+      <div class="container">
+        <div class="section-title" data-aos="fade-in">
+          <span>My Resume</span>
+          <h2>My Resume</h2>
+          <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
         </div>
-        {% endfor %}
-      
-    </div>
-  </section><!-- End My Resume Section -->
+        <div class="row">
+          {% for category in resume_cat %}
+          <div class="col-lg-6"  data-aos="fade-up">
+            <h3 class="resume-title">{{category.category}}</h3>
+            {% for resume in category.resume_set.all %}
+            <div class="resume-item">
+              <h4>{{resume.title}}</h4>
+              <h5>{{resume.duration}}</h5>
+              <p><em>{{resume.location}}</em></p>
+              <p>{{resume.details|safe}}</p>
+            </div>           
+            {% endfor %}
+          </div>
+          {% endfor %}   
+      </div>
+    </section>
+    <!-- End My Resume Section -->
+  {% endif %}
 
  
   
@@ -181,15 +182,12 @@
         {% for category in portfolio_cat %}
         <li data-filter=".filter-{{category}}">{{category}}</li>
         {% endfor %}
-        <!-- <li data-filter=".filter-app">App</li>
-        
+        <!-- <li data-filter=".filter-app">App</li>       
         <li data-filter=".filter-web">Web</li> -->
       </ul>
 
       <div class="row portfolio-container" data-aos="fade-up">
-
         {% for p in portfolio %}
-
         <div class="col-lg-4 col-md-6 portfolio-item filter-{{p.category}}">
           <div class="portfolio-img"><img src="/media/{{p.project_image}}" class="img-fluid" style="width: 100%;" alt=""></div>
           <div class="portfolio-info">
@@ -198,21 +196,21 @@
             <a href="/media/{{p.project_image}}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="{{p.project_name}}"><i class="bx bx-plus"></i></a>
             <a href="{% url 'portfolio:portfolio-detail' pk=p.id %}" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
           </div>
-        </div>
-          
+        </div>          
         {% endfor %}
-
       </div>
+      {% if portfolio_cat  and  portfolio %}
       <div class="text-center" data-aos="fade-up" data-aos-delay="100" >
         <a href="{% url 'portfolio:portfolio-list' %}" class="btn btn-outline-warning">More Portfolios </a>
-      </div>
-
+      </div>  
+      {% endif %}
     </div>
   </section><!-- End My Portfolio Section -->
 
      <!-- ======= Testimonials Section ======= -->
      <section id="testimonials" class="testimonials">
       <div class="container position-relative">
+        {% if testimonial %}
         <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
           <div class="swiper-wrapper">
             {% for t in testimonial %}
@@ -226,19 +224,26 @@
                 </p>
               </div>
             </div><!-- End testimonial item -->
-              
             {% endfor %}
 
           </div>
           <div class="swiper-pagination"></div>
         </div>
+        {% else %}
+        <div class="text-center">
+          <h3><i>There have no testimonial objects now ! </i> <span>&#128528;</span></h3>
+        </div>
+          
+        {% endif %}
+
 
       </div>
     </section><!-- End Testimonials Section -->
 
 
-    <!-- ======= Journal Section ======= -->
-    <section id="blog" class="blog">
+  {% if blogs %}
+     <!-- ======= Journal Section ======= -->
+     <section id="blog" class="blog">
       <div class="container">
         <div class="section-title" data-aos="fade-in">
           <span>BLOG</span>
@@ -254,13 +259,10 @@
                 <a href="{% url 'blog:blog-detail' slug=blog.slug%}"><img src="/media/{{blog.image}}" style="max-height: 200px; width: 100%;" class="img-responsive" alt="img"></a>
 
                 <div class="journal-txt">
-
                   <h4><a href="{% url 'blog:blog-detail' slug=blog.slug%}">{{blog.title}}</a></h4>
                 </div>
-
               </div>
-            </div>
-              
+            </div>              
             {% endfor %}
           </div>
           <div class="text-center" data-aos="fade-up" data-aos-delay="100" >
@@ -269,6 +271,8 @@
         </div>
       </div>
     </section><!-- End Journal Section -->
+
+  {% endif %}
 
   <!-- ======= Pricing Section ======= -->
 
@@ -378,12 +382,18 @@
               <div class="info-box"  data-aos="fade-up">
                 <i class="bx bx-share-alt"></i>
                 <h3>Social Profiles</h3>
+                {% if contact %}
                 <div class="social-links">
                   <a href="{{contact.facebook_url}}" class="facebook"><i class="bi bi-facebook"></i></a>
                   <a href="{{contact.twitter_url}}" class="twitter"><i class="bi bi-twitter"></i></a>
                   <a href="{{contact.instagram_url}}" class="instagram"><i class="bi bi-instagram"></i></a>
                   <a href="{{contact.linkdin_url}}" class="linkedin"><i class="bi bi-linkedin"></i></a>
                 </div>
+                {% else %}
+                <div class="text-center">
+                  <h3><i>No Social Profiles Now</i></h3>
+                </div>                
+                {% endif %}
               </div>
             </div>
             <div class="col-md-6">
