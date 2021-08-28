@@ -24,6 +24,9 @@ def index(request):
         blogs = Blog.objects.all()[:3]
     except:
         return HttpResponse('<h2>Something wrong ! it might be problem in your database table, please insert all table data</h2>')
+
+    # if not testimonial.exists():
+    #    return HttpResponse('<h2>Something went wrong ! Testimonial object is empty')
     
     if request.method == 'POST':
         form = ClientMessageForm(request.POST)
@@ -36,8 +39,7 @@ def index(request):
             messages.warning(request,"Something wrong ! Sorry : your message  send failed !")
             return render(request,'status.html')
 
-    if(testimonial.exists()==False):
-       return HttpResponse('<h2>Something went wrong ! Testimonial object is empty')
+
 
     return render(request,'index.html',{'about':about,'skills':skills,'services':services,'resume_cat':resume_cat,'portfolio_cat':portfolio_cat,
                                         'portfolio':portfolio,'testimonial':testimonial,'forms':forms,'blogs':blogs})

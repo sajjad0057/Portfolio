@@ -97,14 +97,14 @@
   <div id="footer" class="text-center">
     <div class="container" data-aos="fade-in">
       <div class="socials-media text-center">
-
+        {% if contact %}
         <ul class="list-unstyled">
           <li><a href="{{contact.facebook_url}}"><i class="bi bi-facebook"></i></a></li>
           <li><a href="{{contact.twitter_url}}"><i class="bi bi-twitter"></i></a></li>
           <li><a href="{{contact.instagram_url}}"><i class="bi bi-instagram"></i></a></li>
           <li><a href="{{contact.linkdin_url}}"><i class="bi bi-linkedin"></i></a></li>
-        </ul>
-
+        </ul>          
+        {% endif %}
       </div>
 
       <p>&copy; Copyrights SAJJAD. All rights reserved.</p>
