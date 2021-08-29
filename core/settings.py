@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-4ua+9t%l-&9iayudpp!n6kfo9jq2y(&qimlmyu_ub-h!8zcdp7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 # DEBUG = bool(os.environ.get("DEBUG",False))
@@ -195,3 +195,4 @@ LOGIN_URL = '/admin/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
