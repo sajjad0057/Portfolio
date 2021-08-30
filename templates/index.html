@@ -15,14 +15,14 @@
       <div data-aos="fade-right" data-aos-delay="100">
         <p>{{about.title}}</p>
       </div>
-      <!-- {% if contact %}
+      {% if contact %}
       <ul class="list-unstyled list-social" data-aos="fade-up" data-aos-delay="100">
         <li><a href="{{contact.facebook_url}}"><i class="bi bi-facebook"></i></a></li>
         <li><a href="{{contact.twitter_url}}"><i class="bi bi-twitter"></i></a></li>
         <li><a href="{{contact.instagram_url}}"><i class="bi bi-instagram"></i></a></li>
         <li><a href="{{contact.linkdin_url}}"><i class="bi bi-linkedin"></i></a></li>
       </ul>        
-      {% endif %} -->
+      {% endif %}
       <center><a href="#about" class="btn-scroll scrollto" title="Scroll Down"><i class="bx bx-chevron-down"></i></a></center>
     </div>
   </div>
@@ -165,18 +165,15 @@
     <!-- End My Resume Section -->
   {% endif %}
 
- 
   
   <!-- ======= My Portfolio Section ======= -->
   <section id="portfolio" class="portfolio">
     <div class="container">
-
       <div class="section-title" data-aos="fade-in">
         <span>My Portfolio</span>
         <h2>My Portfolio</h2>
         <p>LATEST PROJECTS</p>
       </div>
-
       {% if portfolio_cat %}
       <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up">
         <li data-filter="*" class="filter-active">All</li>
@@ -185,10 +182,8 @@
         {% endfor %}
         <!-- <li data-filter=".filter-app">App</li>       
         <li data-filter=".filter-web">Web</li> -->
-      </ul>
-        
+      </ul>       
       {% endif %}
-
       <div class="row portfolio-container" data-aos="fade-up">
         {% for p in portfolio %}
         <div class="col-lg-4 col-md-6 portfolio-item filter-{{p.category}}">
@@ -209,7 +204,6 @@
       {% endif %}
     </div>
   </section><!-- End My Portfolio Section -->
-
      <!-- ======= Testimonials Section ======= -->
      <section id="testimonials" class="testimonials">
       <div class="container position-relative">
@@ -228,18 +222,14 @@
               </div>
             </div><!-- End testimonial item -->
             {% endfor %}
-
           </div>
           <div class="swiper-pagination"></div>
         </div>
         {% else %}
         <div class="text-center">
           <h3><i>There have no testimonial objects now ! </i> <span>&#128528;</span></h3>
-        </div>
-          
+        </div>          
         {% endif %}
-
-
       </div>
     </section><!-- End Testimonials Section -->
 
@@ -367,7 +357,7 @@
  <!-- End Pricing Section -->
 
   <!-- ======= Contact Me Section ======= -->
-  <!-- <section id="contact" class="contact">
+  <section id="contact" class="contact">
     <div class="container">
 
       <div class="section-title" data-aos="fade-in">
@@ -403,14 +393,18 @@
               <div class="info-box mt-4" data-aos="fade-up" data-aos-delay="100">
                 <i class="bx bx-envelope"></i>
                 <h3>Email Me</h3>
+                {% if contact %}
                 <p><b>{{contact.Email}}</b></p>
+                {% endif %}
               </div>
             </div>
             <div class="col-md-6">
               <div class="info-box mt-4" data-aos="fade-up" data-aos-delay="100">
                 <i class="bx bx-phone-call"></i>
                 <h3>Call Me</h3>
+                {% if contact %}
                 <p><b>{{contact.phone}}</b></p>
+                {% endif %}
               </div>
             </div>
           </div>
@@ -445,10 +439,9 @@
 
     </div>
   </section>
-  End Contact Me Section -->
+  <!-- End Contact Me Section -->
 
 </main><!-- End #main -->
 
-  
 {% endblock body_block %}
 
