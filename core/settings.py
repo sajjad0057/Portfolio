@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 # deploying
+import os
 import django_heroku
 
 from pathlib import Path
@@ -28,6 +29,7 @@ SECRET_KEY = 'django-insecure-4ua+9t%l-&9iayudpp!n6kfo9jq2y(&qimlmyu_ub-h!8zcdp7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = [
     'sajjad-hossain.herokuapp.com',
     '127.0.0.1',
@@ -37,6 +39,9 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    # for handle static file
+    'whitenoise.runserver_nostatic',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,6 +57,8 @@ INSTALLED_APPS = [
     'django_summernote',
     'django_cleanup.apps.CleanupConfig',
 ]
+
+
 
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
@@ -96,25 +103,30 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 #for postgresql 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dfqlnkc8cm6dov',
-        'USER': 'trvxbrrbpmhuwg',
-        'PASSWORD': '79a4a930dbbb58e2a9acaafaf374ad87e272c1247d0093c1a58c98444226e1a8',
-        'HOST': 'ec2-18-209-153-180.compute-1.amazonaws.com',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'dfqlnkc8cm6dov',
+#         'USER': 'trvxbrrbpmhuwg',
+#         'PASSWORD': '79a4a930dbbb58e2a9acaafaf374ad87e272c1247d0093c1a58c98444226e1a8',
+#         'HOST': 'ec2-18-209-153-180.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
+
+
+
+
+
 
 
 # Password validation
@@ -160,7 +172,9 @@ STATICFILES_DIRS = [ BASE_DIR /'static' ]
 #need for deploying
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-django_heroku.settings(locals())
+
+#Activate Heroku settings for Django
+# django_heroku.settings(locals())
 
 
 # handle image 
@@ -169,7 +183,7 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # LOGIN_URL
 
