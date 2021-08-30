@@ -103,25 +103,25 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 #for postgresql 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'dfqlnkc8cm6dov',
-#         'USER': 'trvxbrrbpmhuwg',
-#         'PASSWORD': '79a4a930dbbb58e2a9acaafaf374ad87e272c1247d0093c1a58c98444226e1a8',
-#         'HOST': 'ec2-18-209-153-180.compute-1.amazonaws.com',
-#         'PORT': '5432',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dfqlnkc8cm6dov',
+        'USER': 'trvxbrrbpmhuwg',
+        'PASSWORD': '79a4a930dbbb58e2a9acaafaf374ad87e272c1247d0093c1a58c98444226e1a8',
+        'HOST': 'ec2-18-209-153-180.compute-1.amazonaws.com',
+        'PORT': '5432',
+    }
+}
 
 
 
@@ -174,7 +174,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
 #Activate Heroku settings for Django
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
 
 
 # handle image 
