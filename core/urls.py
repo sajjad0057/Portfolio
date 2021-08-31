@@ -18,6 +18,7 @@ urlpatterns = [
     # """
     # Views and functions for serving static files. These are only to be used
     # during development, and SHOULD NOT be used in a ******production****** setting.
+    # *** This Tachnique is not suitable for professional deployment ****
     # """
     url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
     url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
