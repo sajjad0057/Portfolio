@@ -41,9 +41,11 @@
       <div class="row justify-content-between">
         <div class="col-lg-4" data-aos="fade-up">
           <div class="div-img-bg">
+            {% if about.about_img %}
             <div class="about-img rounded">
               <img src="/media/{{about.about_img}}" class="img-responsive rounded" alt="me">  
-            </div>
+            </div>       
+            {% endif %}
           </div>
         </div>
         <div class="col-lg-7" data-aos="fade-up">
@@ -161,6 +163,7 @@
           </div>
           {% endfor %}   
       </div>
+    </div>
     </section>
     <!-- End My Resume Section -->
   {% endif %}
