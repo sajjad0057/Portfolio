@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 # deploying
 import django_heroku
-
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -39,8 +38,6 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    # for handle static file
-    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -114,10 +111,10 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dfqlnkc8cm6dov',
-        'USER': 'trvxbrrbpmhuwg',
-        'PASSWORD': '79a4a930dbbb58e2a9acaafaf374ad87e272c1247d0093c1a58c98444226e1a8',
-        'HOST': 'ec2-18-209-153-180.compute-1.amazonaws.com',
+        'NAME': 'd34661baho9h5',
+        'USER': 'sruvyjbgtvtlry',
+        'PASSWORD': 'b7ffcc2edda84dd488bb62bbabb25d360a9a764de460dc16401fec1deba1732f',
+        'HOST': 'ec2-34-202-115-62.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
