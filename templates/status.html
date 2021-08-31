@@ -10,7 +10,7 @@
   {% if messages %}
   {% for message in messages %}
   <div style="width:50%;" {% if message.tags %} class="shadow-lg p-3 mb-5 bg-{{message.tags}} rounded" {% endif %}>
-    <h3>{{message}} {% if message.tags == "warning" %} <span>&#128512;</span> {% endif %} </h3>
+    <h3 >{{message}} {% if message.tags == "warning" %} <span>&#128512;</span> {% endif %} </h3>
   </div>   
   {% endfor %}    
   {% endif %}

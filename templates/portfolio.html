@@ -17,6 +17,7 @@
         <p>ALL PROJECTS</p>
       </div>
 
+      {% if portfolio_cat %}
       <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up">
         <li data-filter="*" class="filter-active">All</li>
         {% for category in portfolio_cat %}
@@ -26,7 +27,11 @@
         
         <li data-filter=".filter-web">Web</li> -->
       </ul>
+        
+      {% endif %}
 
+      
+      {% if portfolio %}
       <div class="row portfolio-container" data-aos="fade-up">
 
         {% for p in portfolio %}
@@ -44,6 +49,10 @@
         {% endfor %}
 
       </div>
+        
+      {% endif %}
+
+
 
       {% if is_paginated %}
       <div class="p-5">
