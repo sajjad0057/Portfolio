@@ -6,12 +6,15 @@
 
 {% block inner_body %}
 
+{% if portfolio %}
     <!-- ======= Breadcrumbs Section ======= -->
     <section class="breadcrumbs">
       <div class="container">
+
         <div class="d-flex justify-content-between align-items-center" data-aos="fade-in">
           <h2>{{portfolio.project_name}}</h2>
-        </div>
+        </div>       
+
       </div>
     </section><!-- Breadcrumbs Section -->
 
@@ -58,7 +61,7 @@
 
     </div>
   </section><!-- End Portfolio Details Section -->
-
+  {% endif %}
 
 {% endblock inner_body %}
 

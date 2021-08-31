@@ -15,6 +15,7 @@
         </div>
       </div>
       <div class="container">
+        {% if blog %}
         <div class="journal-block">
           <div class="row justify-content-center">
               {% for b in blog %}
@@ -68,6 +69,7 @@
 
           </div>
         </div>
+        {% endif %}
       </div>
     </div><!-- End Blog Grid -->
 

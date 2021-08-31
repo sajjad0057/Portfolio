@@ -5,18 +5,20 @@
 {% endblock page_name %}
 
 {% block inner_body %}
+<div style="min-height: 60vh;">
+  <center>
+    {% if messages %}
+    {% for message in messages %}
+    <div style="width:80%;" {% if message.tags %} class="shadow-lg p-3 mb-5 bg-{{message.tags}} rounded" {% endif %}>
+      <h3 >{{message}} {% if message.tags == "warning" %} <span>&#128512;</span> {% endif %} </h3>
+    </div>   
+    {% endfor %}    
+    {% endif %}
+    <div>
+      <a href="{% url 'portfolio:index' %}" class="btn btn-danger">Back to Home</a>
+    </div>
+  
+  </center>
 
-<center>
-  {% if messages %}
-  {% for message in messages %}
-  <div style="width:50%;" {% if message.tags %} class="shadow-lg p-3 mb-5 bg-{{message.tags}} rounded" {% endif %}>
-    <h3>{{message}} {% if message.tags == "warning" %} <span>&#128512;</span> {% endif %} </h3>
-  </div>   
-  {% endfor %}    
-  {% endif %}
-  <div>
-    <a href="{% url 'portfolio:index' %}" class="btn btn-danger">Back to Home</a>
-  </div>
-
-</center>
+</div>
 {% endblock inner_body %}
