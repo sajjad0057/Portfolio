@@ -41,9 +41,11 @@
       <div class="row justify-content-between">
         <div class="col-lg-4" data-aos="fade-up">
           <div class="div-img-bg">
+            {% if about.about_img %}
             <div class="about-img rounded">
               <img src="/media/{{about.about_img}}" class="img-responsive rounded" alt="me">  
-            </div>
+            </div>            
+            {% endif %}
           </div>
         </div>
         <div class="col-lg-7" data-aos="fade-up">
@@ -141,26 +143,28 @@
     <!-- ======= My Resume Section ======= -->
     <section id="resume" class="resume">
       <div class="container">
-        <div class="section-title" data-aos="fade-in">
-          <span>My Resume</span>
-          <h2>My Resume</h2>
-          <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
-        </div>
-        <div class="row">
-          {% for category in resume_cat %}
-          <div class="col-lg-6"  data-aos="fade-up">
-            <h3 class="resume-title">{{category.category}}</h3>
-            {% for resume in category.resume_set.all %}
-            <div class="resume-item">
-              <h4>{{resume.title}}</h4>
-              <h5>{{resume.duration}}</h5>
-              <p><em>{{resume.location}}</em></p>
-              <p>{{resume.details|safe}}</p>
-            </div>           
-            {% endfor %}
+          <div class="section-title" data-aos="fade-in">
+            <span>My Resume</span>
+            <h2>My Resume</h2>
+            <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
           </div>
-          {% endfor %}   
+          <div class="row">
+            {% for category in resume_cat %}
+            <div class="col-lg-6"  data-aos="fade-up">
+              <h3 class="resume-title">{{category.category}}</h3>
+              {% for resume in category.resume_set.all %}
+              <div class="resume-item">
+                <h4>{{resume.title}}</h4>
+                <h5>{{resume.duration}}</h5>
+                <p><em>{{resume.location}}</em></p>
+                <p>{{resume.details|safe}}</p>
+              </div>           
+              {% endfor %}
+            </div>
+            {% endfor %}   
+        </div>
       </div>
+
     </section>
     <!-- End My Resume Section -->
   {% endif %}
